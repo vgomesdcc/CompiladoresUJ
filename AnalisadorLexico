@@ -1,0 +1,78 @@
+# Analisador lexico em python
+
+import re  # import do REGEX para reconhecer alguns padroes
+
+# while para
+count = 0
+
+while count == 0:
+
+  expressao = input("Lança a braba: ") # use espaço para a separacao
+
+  def separaString(i):  # separacao da string
+    separa = re.split(
+      r'\s', i
+    )  # onde estiver espaco em branco havera uma quebra na string para a sua separacao
+    if separa is None:
+      return None
+    if separa:
+      return separa
+
+  def numeroNegativo(i):  # verificar se o numero e negativo
+    negativo = re.compile(
+      r'^-\d*\d$'
+    )  # faz a busca do numero negativo no formato "-xx" dentro da string
+    busca = re.search(negativo, i)
+    if busca:
+      return True
+    else:
+      return False
+
+  def numeroPositivo(i):  # verificar se o numero e positivo
+    positivo = re.compile(r'\d*')
+    busca = re.search(positivo, i)
+    if busca:
+      return True
+    else:
+      return False
+
+  def letra(
+    i
+  ):  # metodo para localizar se tem letras na expressao para poder retornar um caractere invalido
+    letras = re.compile(r'[a-zA-Z]')
+    busca = re.search(letras, i)
+    if busca:
+      return True
+    else:
+      return False
+
+  palavraSeparada = separaString(
+    expressao)  # chamada para "estudo" da expressao
+
+  print(" EXPRESSÃO COMPLETA: \n" + str(palavraSeparada))
+
+  for i in palavraSeparada:  # verificaçao
+    if numeroNegativo(i):
+      print("(" + str(i) + ") NÚMERO NEGATIVO")
+    elif i == '+':
+      print("(+) -> OPERADOR DE SOMA")
+    elif i == '-':
+      print("(-) -> OPERADOR DE SUBTRACAO")
+    elif i == '*':
+      print("(*) -> OPERADOR DE MULTIPLICACAO")
+    elif i == '^':
+      print("(^) -> OPERADOR DE EXPONENCIACAO")
+    elif i == '/':
+      print("(/) -> OPERADOR DE DIVISAO")
+    elif i == ')':
+      print(" ) -> DELIMITADOR PARENTESES(fecha parenteses)")
+    elif i == '(':
+      print(" ( -> DELIMITADOR PARENTESES(abre parenteses)")
+    elif i == '%':
+      print(" % -> PORCENTAGEM")
+    elif letra(i):
+      print("(" + i + ") -> CARACTERE INVALIDO")
+    elif numeroPositivo(i):
+      print("(" + str(i) + ") -> NUMERO POSITIVO")
+    else:
+      print("ERRO: CARACTERE INVALIDO")
