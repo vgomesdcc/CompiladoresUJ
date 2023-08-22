@@ -2,7 +2,7 @@
 
 import re  # import do REGEX para reconhecer alguns padroes
 
-# while para
+# while para ser uma execucao em loop
 count = 0
 
 while count == 0:
