@@ -1,0 +1,36 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main () {
+    int lista[10]= {10,9,8,5,4,3,2,1,7,6};
+    
+    int escolha;
+    cout<<"Menu de escolhas\n";
+    cout<<"Digite 1 para colocar em lista ordenada\n";
+    cout<<"Digite 2 para remover da lista ordenada\n";
+    cout<<"Digite 3 para busca binaria\n";
+    cout<<"Digite 4 para listar os dados\n";
+    cout<<"Digite 5 para meter o pe\n";
+    cin>>escolha;
+    
+    while(escolha != 5) {
+        if (escolha == 1) {
+            int aux;
+            for (int i=0; i<10; i++){
+                for (int j=i; j<10; j++){
+                    if (lista[i]>lista[j]){
+                        aux = lista[i];
+                        lista[i] = lista[j];
+                        lista[j] = aux;
+                     }
+                }
+            }
+            for (int i=0; i<10; i++){
+                cout << lista[i] << " ";
+            }
+            cout<<"\n";
+        }
+        cin>>escolha;
+    }
+}
