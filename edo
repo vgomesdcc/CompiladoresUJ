@@ -3,7 +3,8 @@
 using namespace std;
 
 int main () {
-    int lista[10]= {10,9,8,5,4,3,2,1,7,6};
+    int lista[10] = {10,9,8,5,4,3,2,1,7,6};
+    int copia[10] = {10,9,8,5,4,3,2,1,7,6};
     
     int escolha;
     cout<<"Menu de escolhas\n";
@@ -15,6 +16,7 @@ int main () {
     cin>>escolha;
     
     while(escolha != 5) {
+        
         if (escolha == 1) {
             int aux;
             for (int i=0; i<10; i++){
@@ -28,6 +30,32 @@ int main () {
             }
             for (int i=0; i<10; i++){
                 cout << lista[i] << " ";
+            }
+            cout<<"\n";
+        }
+        
+        if(escolha == 2) {
+            for(int i=0; i<10; i++){
+                cout<<copia[i]<<" ";
+            }
+            cout<<"\n";
+        }
+        
+        if(escolha == 3) {
+            int procura;
+            cout<<"Digite o que procura: ";
+            cin>>procura;
+            
+            for(int i=0; i<10; i++) {
+                if(lista[i]==procura){
+                    cout<<"O que voce procura esta na posicao "<<lista[i]<<" na lista ordenada\n";
+                }
+            }
+        }
+        
+        if(escolha == 4) {
+            for(int i=0; i<10; i++){
+                cout<<lista[i]<<" ";
             }
             cout<<"\n";
         }
