@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int list [10] = {10,9,8,5,4,3,2,1,7,6};
+    int escolha;
+    int flag=0;
+    cin>>escolha;
+    while (escolha!=5){
+        if(escolha==1){
+            //escolha a posicao para inserir
+            int inserir, num;
+            cin>>inserir;
+            for(int i=0; i<10; i++){
+                if(inserir==i){
+                    //insira o numero
+                    cin>>num;
+                    list[i] = num;
+                }
+            }
+        }
+        if(escolha==2){
+            // escolha o numero para remover
+            int remove;
+            cin>>remove;
+            for(int i=0; i<10; i++){
+                if(list[i]==remove){
+                    list[i] = 0;
+                }
+            }
+        }
+        if(escolha==3){
+            int busca;
+            // qual numero quer encontrar
+            cin>>busca;
+            for(int i=0; i<10; i++){
+                if(list[i]==busca){
+                    cout<<"o numero esta na posicao "<<i<<"\n";
+                }
+                else if(list [i]!=busca){
+                        flag++;
+                }
+                if(flag==10){
+                        cout<<"o numero nao esta na lista\n";
+                    }
+                }
+            }
+        if(escolha==4){
+            for(int i=0; i<10; i++){
+                cout<<list[i]<<" ";
+            }
+            cout<<"\n";
+        }
+        if(escolha==5){
+            break;
+        }
+        cin>>escolha;
+    }
+}
