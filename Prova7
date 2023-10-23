@@ -1,0 +1,60 @@
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>    
+using namespace std;
+
+int main() {
+    // Inicialize o gerador de números aleatórios com a hora atual
+    srand(static_cast<unsigned>(time(0)));
+
+    int tamanhoLista = 15;
+    vector <int> listaPares;
+
+    for (int i = 0; i < tamanhoLista; i++) {
+        int numeroAleatorio;
+        do {
+            numeroAleatorio = rand() % 100; // Gere um número aleatório entre 0 e 99
+        } while (numeroAleatorio % 2 != 0); // Verifique se o número é par
+
+        listaPares.push_back(numeroAleatorio); // Adicione o número par à lista
+    }
+    cout<<"Escolha o tipo de ordenacao\n";
+    cout<<"1 para Selecao ou 2 para Insercao\n";
+    int escolha;
+    cin>>escolha;
+        if(escolha==1){
+           for(int indice=0; indice<15; indice++){
+                int indiceMenor = indice;
+            for (int indiceSeguinte = indice+1; indiceSeguinte < 15; indiceSeguinte++) {
+                if (listaPares[indiceSeguinte] < listaPares[indiceMenor]) {
+                    indiceMenor = indiceSeguinte;
+                }
+            }
+        int aux = listaPares[indice];
+        listaPares[indice] = listaPares[indiceMenor];
+        listaPares[indiceMenor] = aux;
+            }
+        }
+        
+        if(escolha==2){
+           for (int i = 1; i < listaPares.size(); i++) {
+		        int sorteado = listaPares[i];
+		        int j = i - 1;
+		
+		    while ((j >= 0) && (listaPares[j]>sorteado)) {
+			    listaPares[j + 1] = listaPares[j];
+			    j--;
+		    }
+		
+		    listaPares[j+1] = sorteado;
+	        }
+        }
+    // Exiba a lista de números pares
+    cout << "Lista de 15 números pares aleatórios: ";
+    for (int numero : listaPares) {
+        cout << numero << " ";
+    }
+    
+    cout <<"\n";
+}
