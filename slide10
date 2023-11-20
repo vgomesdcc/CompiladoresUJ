@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct No {
+    int valor;
+    struct No* proximo;
+} no;
+
+no* buscar(no* lista, int valor) {
+    no* atual = lista;
+
+    while (atual != NULL) {
+        if (atual->valor == valor) {
+            return atual;
+        }
+        atual = atual->proximo;
+    }
+
+    return NULL; // Retorna NULL se o valor não for encontrado na lista
+}
+
+int main() {
+    // Criação de uma lista simples para demonstração
+    no* lista = (no*)malloc(sizeof(no));
+    lista->valor = 10;
+
+    no* segundoNo = (no*)malloc(sizeof(no));
+    segundoNo->valor = 20;
+
+    no* terceiroNo = (no*)malloc(sizeof(no));
+    terceiroNo->valor = 30;
+
+    lista->proximo = segundoNo;
+    segundoNo->proximo = terceiroNo;
+    terceiroNo->proximo = NULL;
+
+    // Valor a ser buscado pelo usuário
+    int valorBuscado;
+    printf("Digite o valor a ser buscado: ");
+    scanf("%d", &valorBuscado);
+
+    // Chamada da função de busca
+    no* resultado = buscar(lista, valorBuscado);
+
+    // Verificação do resultado
+    if (resultado != NULL) {
+        printf("Valor encontrado na lista.\n");
+    } else {
+        printf("Valor NÃO encontrado na lista.\n");
+    }
+
+    // Liberação de memória (pode variar dependendo da implementação completa)
+    free(lista);
+    free(segundoNo);
+    free(terceiroNo);
+
+    return 0;
+}
